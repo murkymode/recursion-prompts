@@ -124,6 +124,18 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  // I: integer
+  // O: sum of numbers below given integer
+  // C: mocha
+  // E: works with negatives
+
+  // base case: n is 1, or -1, return 0
+  // recursive: n is greater than 1
+
+  if (n ===  0) {
+    return 0;
+  }
+  return n > 0 ? n - 1 + sumBelow(n - 1) : n + 1 + sumBelow(n + 1);
 };
 
 // 6. Get the integers within a range (x, y).
