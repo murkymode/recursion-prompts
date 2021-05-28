@@ -10,17 +10,18 @@ var factorial = function(n) {
   // I: number
   // O: factorial of that number
   // C: mocha
-  // E:
+  // E: n is less than 0
 
-  if (n < 0) { /* edge case */
+  if (n < 0) { /* edge */
     return null;
   }
 
   if (n <= 1) { /* base */
     return 1;
-  } else { /* recursive */
-    return n * factorial(n-1);
   }
+
+  return n * factorial(n-1); /* recursive */
+
 
   // var result = 1;
   // var innerFunc = function(num) {
@@ -37,6 +38,31 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  // I: an array
+  // O: integer, sum of the array
+  // C: mocha
+  // E: empty array return
+
+  var accumulator = array[0];
+  if (array.length === 0) { /* edge */
+    return 0;
+  }
+
+  if (array.length === 1) { /* base */
+    return accumulator;
+  }
+
+  return accumulator += sum(array.slice(1));
+
+  // if (array.length === 1) {
+  //   return accumulator;
+  // } else {
+  //   var innerFunc = function(arr) {
+  //     accumulator += sum(arr.slice(1));
+  //   }
+  //   innerFunc(array);
+  // }
+  // return accumulator;
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
