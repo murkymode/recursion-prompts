@@ -22,7 +22,6 @@ var factorial = function(n) {
 
   return n * factorial(n-1); /* recursive */
 
-
   // var result = 1;
   // var innerFunc = function(num) {
   //   if (num <= 1) {
@@ -52,7 +51,7 @@ var sum = function(array) {
     return accumulator;
   }
 
-  return accumulator += sum(array.slice(1));
+  return accumulator += sum(array.slice(1)); /* recursion */
 
   // if (array.length === 1) {
   //   return accumulator;
@@ -68,6 +67,35 @@ var sum = function(array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  // I: nested array
+  // O: sum of integers within nested array
+  // C: mocha, cannot use flatten
+  // E: empty array return
+
+
+  // if (array.length > 0) {
+  //   return arraySum(array[0]) + arraySum(array.slice(1));
+  // }
+
+  // if (array.length === 0) { /* edge */
+  //   return 0;
+  // } else { /* base */
+  //   return array;
+  // }
+
+  var accumulator = 0;
+  if (array.length === 0) { /* edge */
+    return accumulator;
+  }
+
+  for (var i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+      accumulator += arraySum(array[i]);
+    } else {
+      accumulator += array[i]
+    }
+  }
+  return accumulator;
 };
 
 // 4. Check if a number is even.
